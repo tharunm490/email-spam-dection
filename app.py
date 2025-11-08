@@ -269,16 +269,16 @@ with st.sidebar:
 - Classifies using **Machine Learning**  
 - Provides **AI-powered Gemini explanations**
 """)
-    st.subheader("🧪 Try Samples")
-    c1, c2 = st.columns(2)
-    with c1:
-        if st.button("🚨 Random Spam"):
-            st.session_state.text = random.choice(SPAM_SAMPLES)
-            st.rerun()
-    with c2:
-        if st.button("✅ Random Safe"):
-            st.session_state.text = random.choice(NOT_SPAM_SAMPLES)
-            st.rerun()
+    
+    st.markdown("---")
+    st.subheader("🧪 Try Sample Emails")
+    st.write("Click below to load a random email (spam or legitimate):")
+    
+    if st.button("🎲 Try Random Email", use_container_width=True):
+        # Combine all samples and pick one randomly
+        all_samples = SPAM_SAMPLES + NOT_SPAM_SAMPLES
+        st.session_state.text = random.choice(all_samples)
+        st.rerun()
 
 # ------------------- Input Area -------------------
 default_text = st.session_state.get('text', '')
